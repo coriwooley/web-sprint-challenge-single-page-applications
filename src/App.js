@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import {Route, Link} from 'react-router-dom'
 import PizzaForm from "./components/pizzaForm";
 import * as yup from 'yup'
 import schema from "./validation/formSchema"
 import Homepage from "./components/homepage";
+import axios from "axios";
 
 
 const initialFormValues = {
@@ -28,15 +29,13 @@ const initialFormErrors = {
   specialText: '',
 }
 
+
 const App = () => {
   const [formValues, setFormValues] = useState(initialFormValues)
   const [formErrors, setFormErrors] = useState(initialFormErrors)
-
+  const [orders, setOrders] = useState([])
  
-  const formSubmit = () => {
-    //wip
-  }
-
+ 
   const validate = (name, value) => {
     yup.reach(schema, name)
     .validate(value)
@@ -51,10 +50,31 @@ const App = () => {
   }
 
 
+  const submitOrders = (newOrders) => {
+    axios.post(`https://reqres.in/api/orders`, newOrders)
+    .then(res => {
+      setOrders([res.data, ...orders])
+      setFormValues(initialFormValues)
+    }).catch(err => console.log(err))
+  }
+
+
+  const formSubmit = () => {
+    const newOrder = {
+      sizes: formValues.sizes,
+      sauce: formValues.sauces,
+      toppings: ["pepperoni", "sausage", "bacon", "onion"].filter(top => formValues[top]),
+      name: formValues.name,
+      specialText: formValues.specialText,
+    };
+
+    submitOrders(newOrder)
+  };
+
+
   return (
     <div className="App">
       <nav>
-        <h1 className="pizzaHeader">Slice of Heaven</h1>
         <div className="nav-links">
           <Link to="/">Home</Link>
           <Link to="/pizza" id="order-pizza">Order Pizza</Link>

@@ -133,7 +133,7 @@ const onSubmit = (e) => {
                     placeholder="Anything else to add?"/>
                 </div>
 
-                <button id="order-button">Add To Order</button>
+                <button type="submit" id="order-button">Add To Order</button>
             </form>
         </div>
     )
