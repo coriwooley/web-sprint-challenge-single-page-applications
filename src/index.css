@@ -11,3 +11,50 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+html { 
+  background: url(https://pbs.twimg.com/media/FKEYoNGX0AAWWzB?format=jpg&name=large) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.form {
+  background-color: lightyellow;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 50%;
+  margin: auto;
+  opacity: .9;
+}
+
+.homepage {
+  background-color: lightyellow;
+  max-width: 30%;
+  margin: auto;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 3rem;
+  opacity: .8;
+}
+
+.nav {
+  max-width: 15%;
+  margin: auto;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-text {
+  text-decoration: none;
+  background-color: lightyellow;
+  opacity: .9;
+  color: black;
+  padding: 1rem;
+}
+

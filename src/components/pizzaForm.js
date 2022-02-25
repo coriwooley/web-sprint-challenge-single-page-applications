@@ -15,8 +15,8 @@ const onSubmit = (e) => {
 }
 
     return (
-        <div>
-            <h1>Build Your Pizza</h1>
+        <div className="form">
+            <h1>Slice of Heaven Pizzeria</h1>
             <img src="https://media.istockphoto.com/photos/picking-slice-of-pepperoni-pizza-picture-id1133727757?k=20&m=1133727757&s=612x612&w=0&h=WAx4F4efU3Yx3Qu15iUgTMtB7G_kbmh-DqAvL4aNfeE=" alt="two hands grabbing slices of pizza"/>
 
             <form id="pizza-form" onSubmit={onSubmit}>

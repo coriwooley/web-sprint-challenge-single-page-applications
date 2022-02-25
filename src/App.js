@@ -75,9 +75,10 @@ const App = () => {
   return (
     <div className="App">
       <nav>
-        <div className="nav-links">
-          <Link to="/">Home</Link>
-          <Link to="/pizza" id="order-pizza">Order Pizza</Link>
+        
+        <div className="nav">
+          <Link className="nav-text" to="/">HOME</Link>
+          <Link className="nav-text" to="/pizza" id="order-pizza">ORDER PIZZA</Link>
         </div>
       </nav>
 
