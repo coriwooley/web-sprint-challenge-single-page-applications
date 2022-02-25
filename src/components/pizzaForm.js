@@ -1,7 +1,18 @@
 import React from "react";
 
 const PizzaForm = (props) => {
-const {values} = props
+const {values, submit, change, errors} = props
+
+const onChange = (e) => {
+    const {name, value, type, checked} = e.target
+    const newVal = type === "checkbox" ? checked : value
+    change(name, newVal)
+}
+
+const onSubmit = (e) => {
+    e.preventDefault()
+    submit()
+}
 
     return (
         <div>
@@ -13,6 +24,7 @@ const {values} = props
 
                 <div className="pizza-sizes">
                     <h3>Choice of Size</h3>
+                    <p>{errors.sizes}</p>
                     <select id="size-dropdown" onChange={onChange} value={values.sizes} name="sizes">
                         <option value="">--select size--</option>
                         <option value="small">Small</option>
@@ -24,7 +36,7 @@ const {values} = props
 
                 <div className="sauce-choices">
                     <h3>Choice of Sauce</h3>
-
+                    <p>{errors.sauces}</p>
                     <label>Original Red
                         <input 
                         type="radio" 
@@ -64,6 +76,10 @@ const {values} = props
 
                 <div className="toppings">
                     <h3>Add Toppings</h3>
+                    <p>{errors.pepperoni}</p>
+                    <p>{errors.sausage}</p>
+                    <p>{errors.onion}</p>
+                    <p>{errors.bacon}</p>
                     <label>Pepperoni
                         <input 
                         type="checkbox" 
@@ -99,6 +115,8 @@ const {values} = props
 
                 <div className="customer-instructions">
                     <h3>Special Instructions</h3>
+                    <p>{errors.name}</p>
+                    <p>{errors.specialText}</p>
                     <label>Name:
                         <input 
                         type="text"
